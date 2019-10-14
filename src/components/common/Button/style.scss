@@ -1,0 +1,11 @@
+@import 'styles/utils';
+
+.button {
+  font-size: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.2, 1.2);
+  }
+}
