@@ -4,6 +4,8 @@ import TextArea from 'react-textarea-autosize';
 import './style.scss';
 
 const EditView = ({
+  title,
+  content,
   handleChangeTitle,
   handleChangeContent,
 }) => {
@@ -14,6 +16,7 @@ const EditView = ({
           onChange={handleChangeTitle}
           placeholder="Title."
           maxLength="140"
+          value={title}
         />
       </div>
       <div className="edit-content">
@@ -23,6 +26,7 @@ const EditView = ({
             placeholder="Content."
             maxLength="2500"
             maxRows={27}
+            value={content}
           />
         </div>
         <div className="edit-content-preview">
@@ -34,6 +38,8 @@ const EditView = ({
 };
 
 EditView.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   handleChangeTitle: PropTypes.func.isRequired,
   handleChangeContent: PropTypes.func.isRequired,
 };

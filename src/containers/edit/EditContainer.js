@@ -38,15 +38,18 @@ class EditContainer extends PureComponent {
   }
   render() {
     const { handleChangeTitle, handleChangeContent, handleConfirmButton } = this;
+    const { title, content } = this.props;
+    
     return (
       <PageTemplate
         buttonType="check"
         handleRightButton={handleConfirmButton}
       >
         <EditView
+          title={title}
+          content={content}
           handleChangeTitle={handleChangeTitle}
           handleChangeContent={handleChangeContent}
-          handleConfirmButton={handleConfirmButton}
         />
       </PageTemplate>
     );

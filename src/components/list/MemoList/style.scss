@@ -1,0 +1,27 @@
+@import 'styles/utils';
+
+.memolist-container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem 2.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  @include media("<huge") {
+    width: 768px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include media("<large") {
+    width: 512px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include media("<medium") {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media("<small") {
+    grid-template-columns: 1fr;
+  }
+}

@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 import { actionCreators as listActions } from 'reducers/list';
 
 import PageTemplate from 'components/common/PageTemplate';
+import MemoList from 'components/list/MemoList';
 
 class ListContainer extends PureComponent {
   render() {
     const { list } = this.props;
     return (
       <PageTemplate buttonType="plus-square" to="edit">
-        {list.map((memo) => (<div>{memo.title}</div>))}
+        <MemoList
+          list={list}
+        />
       </PageTemplate>
     );
   }
