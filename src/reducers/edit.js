@@ -22,7 +22,7 @@ const submitMemo = () => ({
   type: SUBMIT_MEMO,
 });
 
-export const actionCreatos = {
+export const actionCreators = {
   changeTitle,
   changeContent,
   submitMemo,
@@ -35,7 +35,6 @@ const initialState = {
   id,
   title: '',
   content: '',
-  list: [],
 };
 
 // reducer
@@ -54,17 +53,10 @@ export function reducer(state = initialState, action) {
       };
     }
     case SUBMIT_MEMO: {
-      const memo = {
-        id: state.id,
-        title: state.title,
-        content: state.content,
-      };
-
       return {
         id: state.id + 1,
         title: '',
         content: '',
-        list: [...state.list, memo],
       };
     }
     default: {

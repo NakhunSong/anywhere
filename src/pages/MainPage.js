@@ -1,11 +1,9 @@
 import React from 'react';
-import PageTemplate from 'components/common/PageTemplate';
+import ListContainer from 'containers/list/ListContainer';
 
 const MainPage = () => {
   return (
-    <PageTemplate buttonType="plus-square" to="edit">
-
-    </PageTemplate>
+    <ListContainer />
   );
 };
 
