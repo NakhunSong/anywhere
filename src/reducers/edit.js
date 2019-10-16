@@ -1,6 +1,7 @@
 // actions
 export const CHANGE_TITLE = 'CHANGE_TITLE';
 export const CHANGE_CONTENT = 'CHANGE_CONTENT';
+export const SUBMIT_MEMO = 'SUBMIT_MEMO';
 
 // action creators
 const changeTitle = (title) => ({
@@ -17,18 +18,24 @@ const changeContent = (content) => ({
   },
 });
 
+const submitMemo = () => ({
+  type: SUBMIT_MEMO,
+});
+
 export const actionCreatos = {
   changeTitle,
   changeContent,
+  submitMemo,
 };
 
 // initial state
-let id = localStorage.getItem('list') ? localStorage.getItem('list').length : 0;
+let id = global.localStorage.getItem('list') ? global.localStorage.getItem('list').length : 0;
 
 const initialState = {
   id,
   title: '',
   content: '',
+  list: [],
 };
 
 // reducer
@@ -37,11 +44,27 @@ export function reducer(state = initialState, action) {
     case CHANGE_TITLE: {
       return {
         ...state,
+        title: action.payload.title,
       };
     }
     case CHANGE_CONTENT: {
       return {
         ...state,
+        content: action.payload.content,
+      };
+    }
+    case SUBMIT_MEMO: {
+      const memo = {
+        id: state.id,
+        title: state.title,
+        content: state.content,
+      };
+
+      return {
+        id: state.id + 1,
+        title: '',
+        content: '',
+        list: [...state.list, memo],
       };
     }
     default: {

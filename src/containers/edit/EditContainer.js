@@ -1,27 +1,51 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { actionCreatos as editActions } from 'reducers/edit';
 import EditView from '../../components/edit/EditView';
-import EditDropdown from '../../components/edit/EditDropdown';
 import EditTemplate from '../../components/edit/EditTemplate';
+import PageTemplate from 'components/common/PageTemplate';
 
 class EditContainer extends Component {
-  handleChangeTitle = () => {
 
+  handleChangeTitle = (event) => {
+    const { value } = event.currentTarget;
+    const { EditActions } = this.props;
+    EditActions.changeTitle(value);
   }
-  handleChangeContent = () => {
-
+  handleChangeContent = (event) => {
+    const { value } = event.currentTarget;
+    const { EditActions } = this.props;
+    EditActions.changeContent(value);
+  }
+  handleConfirmButton = () => {
+    const { EditActions } = this.props;
+    EditActions.submitMemo();
   }
   render() {
-    const { handleChangeTitle, handleChangeContent } = this;
+    const { handleChangeTitle, handleChangeContent, handleConfirmButton } = this;
     return (
-      <EditTemplate>
-        <EditDropdown />
+      <PageTemplate
+        buttonType="check"
+        handleRightButton={handleConfirmButton}
+      >
         <EditView
           handleChangeTitle={handleChangeTitle}
-          handleChangeTitle={handleChangeContent}
+          handleChangeContent={handleChangeContent}
+          handleConfirmButton={handleConfirmButton}
         />
-      </EditTemplate>
+      </PageTemplate>
     );
   }
 }
 
-export default EditContainer;
+export default connect(
+  (state) => ({
+    title: state.edit.title,
+    content: state.edit.content,
+  }),
+  (dispatch) => ({
+    EditActions: bindActionCreators(editActions, dispatch),
+  })
+)(EditContainer);

@@ -12,7 +12,7 @@ const EditView = ({
       <div className="edit-title">
         <TextArea
           onChange={handleChangeTitle}
-          placeholder="Here is Title.(Max length: 140)"
+          placeholder="Title."
           maxLength="140"
         />
       </div>
@@ -20,7 +20,7 @@ const EditView = ({
         <div className="edit-content-input">
           <TextArea
             onChange={handleChangeContent}
-            placeholder="Here is Content."
+            placeholder="Content."
             maxLength="2500"
             maxRows={27}
           />
