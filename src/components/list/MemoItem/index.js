@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './style.scss';
 
 const MemoItem = ({ memo }) => {
@@ -8,6 +10,10 @@ const MemoItem = ({ memo }) => {
       <div className="memo-content">{memo.content}</div>
     </div>
   );
+};
+
+MemoItem.propTypes = {
+  memo: PropTypes.object.isRequired,
 };
 
 export default MemoItem;

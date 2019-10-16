@@ -6,6 +6,7 @@ import { actionCreators as editActions } from 'reducers/edit';
 import { actionCreators as listActions } from 'reducers/list';
 import EditView from '../../components/edit/EditView';
 import PageTemplate from 'components/common/PageTemplate';
+import { setItem } from 'lib/utils/listLocalStorage';
 
 class EditContainer extends PureComponent {
   handleChangeTitle = (event) => {
@@ -34,6 +35,8 @@ class EditContainer extends PureComponent {
     };
     console.log(memo);
     ListActions.addMemo(memo);
+    setItem(memo);
+    console.log(memo);
     EditActions.submitMemo();
   }
   render() {

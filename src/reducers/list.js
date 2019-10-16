@@ -1,3 +1,5 @@
+import { getItem } from "lib/utils/listLocalStorage";
+
 // actions
 export const GET_MEMO_LIST = 'GET_MEMO_LIST';
 export const ADD_MEMO = 'ADD_MEMO';
@@ -23,9 +25,10 @@ export const actionCreators = {
 };
 
 // initial state
-
+const initialList = getItem('list');
+console.log(initialList);
 const initialState = {
-  list: [],
+  list: initialList || [],
 };
 
 // reducer
@@ -37,7 +40,6 @@ export function reducer(state = initialState, action) {
       };
     }
     case ADD_MEMO: {
-      console.log('confirm');
       return {
         list: [...state.list, action.payload.memo],
       };
