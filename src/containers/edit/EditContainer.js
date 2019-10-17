@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import PropTypes from 'prop-types';
 import { actionCreators as editActions } from 'reducers/edit';
 import { actionCreators as listActions } from 'reducers/list';
-import EditView from '../../components/edit/EditView';
-import PageTemplate from 'components/common/PageTemplate';
 import { setItem } from 'lib/utils/listLocalStorage';
+import PageTemplate from 'components/common/PageTemplate';
+import EditView from 'components/edit/EditView';
 
 class EditContainer extends PureComponent {
   handleChangeTitle = (event) => {
@@ -14,20 +14,22 @@ class EditContainer extends PureComponent {
     const { EditActions } = this.props;
     EditActions.changeTitle(value);
   }
+
   handleChangeContent = (event) => {
     const { value } = event.currentTarget;
     const { EditActions } = this.props;
     EditActions.changeContent(value);
   }
+
   handleConfirmButton = () => {
     const {
       EditActions,
       ListActions,
       id,
       title,
-      content
+      content,
     } = this.props;
-    
+ 
     const memo = {
       id,
       title,
@@ -39,10 +41,11 @@ class EditContainer extends PureComponent {
     console.log(memo);
     EditActions.submitMemo();
   }
+
   render() {
     const { handleChangeTitle, handleChangeContent, handleConfirmButton } = this;
     const { title, content } = this.props;
-    
+
     return (
       <PageTemplate
         buttonType="check"
@@ -59,6 +62,14 @@ class EditContainer extends PureComponent {
   }
 }
 
+EditContainer.propTypes = {
+  EditActions: PropTypes.func.isRequired,
+  ListActions: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
+
 export default connect(
   (state) => ({
     id: state.edit.id,
@@ -68,5 +79,5 @@ export default connect(
   (dispatch) => ({
     EditActions: bindActionCreators(editActions, dispatch),
     ListActions: bindActionCreators(listActions, dispatch),
-  })
+  }),
 )(EditContainer);
