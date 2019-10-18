@@ -28,7 +28,7 @@
       flex: 0.5;
       border-right: 2px solid $transparentWhite;
       textarea {
-        font-size: 15px;
+        font-size: 1.2rem;
         width: 100%;
         @include media("<medium") {
           font-size: 12px;

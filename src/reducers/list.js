@@ -25,23 +25,28 @@ export const actionCreators = {
 };
 
 // initial state
-const initialList = getItem('list');
-console.log(initialList);
 const initialState = {
-  list: initialList || [],
+  memoList: [],
 };
 
 // reducer
 export function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_MEMO_LIST: {
+      const list = getItem('list');
+      console.log(list);
+      if (list) {
+        return {
+          memoList: list,
+        };
+      }
       return {
         ...state,
       };
     }
     case ADD_MEMO: {
       return {
-        list: [...state.list, action.payload.memo],
+        memoList: [...state.memoList, action.payload.memo],
       };
     }
     default: {

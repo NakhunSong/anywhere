@@ -8,12 +8,22 @@ import PageTemplate from 'components/common/PageTemplate';
 import MemoList from 'components/list/MemoList';
 
 class ListContainer extends PureComponent {
+
+  componentDidMount() {
+    this.initialize();
+  }
+
+  initialize = () => {
+    const { ListActions } = this.props;
+    ListActions.getMemoList();
+  };
+
   render() {
-    const { list } = this.props;
+    const { memoList } = this.props;
     return (
       <PageTemplate buttonType="plus-square" to="edit">
         <MemoList
-          list={list}
+          list={memoList}
         />
       </PageTemplate>
     );
@@ -21,12 +31,13 @@ class ListContainer extends PureComponent {
 }
 
 ListContainer.propTypes = {
-  list: PropTypes.arrayOf.isRequired,
+  ListActions: PropTypes.object.isRequired,
+  memoList: PropTypes.array.isRequired,
 };
 
 export default connect(
   (state) => ({
-    list: state.list.list,
+    memoList: state.list.memoList,
   }),
   (dispatch) => ({
     ListActions: bindActionCreators(listActions, dispatch),

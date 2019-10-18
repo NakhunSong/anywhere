@@ -26,8 +26,8 @@ const PageTemplate = ({
 PageTemplate.propTypes = {
   children: PropTypes.element.isRequired,
   buttonType: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  handleRightButton: PropTypes.func.isRequired,
+  to: PropTypes.string,
+  handleRightButton: PropTypes.func,
 };
 
 export default PageTemplate;

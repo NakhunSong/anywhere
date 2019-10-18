@@ -35,10 +35,8 @@ class EditContainer extends PureComponent {
       title,
       content,
     };
-    console.log(memo);
     ListActions.addMemo(memo);
     setItem(memo);
-    console.log(memo);
     EditActions.submitMemo();
   }
 

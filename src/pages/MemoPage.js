@@ -1,11 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const MemoPage = () => {
+import MemoContainer from 'containers/memo/MemoContainer';
+
+const MemoPage = ({ match }) => {
   return (
-    <div>
-      메모페이지
-    </div>
+    <MemoContainer
+      match={match}
+    />
   );
+};
+
+MemoPage.propTypes = {
+  match: PropTypes.object.isRequired,
 };
 
 export default MemoPage;

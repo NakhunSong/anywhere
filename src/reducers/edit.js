@@ -1,3 +1,6 @@
+// lib
+import { getItem } from 'lib/utils/listLocalStorage';
+
 // actions
 export const CHANGE_TITLE = 'CHANGE_TITLE';
 export const CHANGE_CONTENT = 'CHANGE_CONTENT';
@@ -29,7 +32,7 @@ export const actionCreators = {
 };
 
 // initial state
-let id = global.localStorage.getItem('list') ? global.localStorage.getItem('list').length : 0;
+let id = getItem('list').length;
 
 const initialState = {
   id,
