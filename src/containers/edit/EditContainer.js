@@ -61,8 +61,8 @@ class EditContainer extends PureComponent {
 }
 
 EditContainer.propTypes = {
-  EditActions: PropTypes.func.isRequired,
-  ListActions: PropTypes.func.isRequired,
+  EditActions: PropTypes.object.isRequired,
+  ListActions: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
