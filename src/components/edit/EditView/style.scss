@@ -34,7 +34,7 @@
           font-size: 12px;
         }
       }
-      @include media("<650px") {
+      @include media("<medium") {
         flex: 1;
         border-right: none;
       }
@@ -43,13 +43,5 @@
   .edit-content-preview {
     flex: 0.5;
     margin-left: 10px;
-  }
-
-  @include media("<x-large") {
-    width: 100%;
-  }
-  @include media("<medium") {
-    width: 100%;
-    padding: 0.5rem 0.5rem;
   }
 }

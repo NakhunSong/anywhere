@@ -1,5 +1,4 @@
 import React from 'react';
-import { } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.scss';
@@ -10,8 +9,19 @@ const MemoItem = ({ memo }) => {
     <div
       className="memo-container"
     >
-      <h2 className="memo-title">{memo.title}</h2>
-      <div className="memo-content">{memo.content}</div>
+      <h2 className="memo-title">
+        {memo.title.length < 14 ? memo.title : `${memo.title.substring(0, 14)}...` }
+      </h2>
+      <div className="memo-content">
+        {memo.content.length < 130
+          ? memo.content
+          : (
+            <div>
+              <p>{memo.content.substring(0, 100)}</p>
+              <p>. . .</p>
+            </div>
+          )}
+      </div>
     </div>
   );
 };
