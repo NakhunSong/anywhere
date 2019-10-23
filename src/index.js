@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Root from './Root';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-import 'antd/dist/antd.css';
-import './styles/reset.scss';
+// import 'antd/dist/antd.css';
+// import './styles/reset.scss';
 import './styles/base.scss';
 import * as serviceWorker from './serviceWorker';
 

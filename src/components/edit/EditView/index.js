@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextArea from 'react-textarea-autosize';
+
 import './style.scss';
+import Markdown from 'components/common/Markdown';
 
 const EditView = ({
   title,
@@ -30,7 +32,7 @@ const EditView = ({
           />
         </div>
         <div className="edit-content-preview">
-
+          <Markdown content={content} />
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './style.scss';
+import Markdown from 'components/common/Markdown';
 
 const Memo = ({
   title,
@@ -13,7 +14,7 @@ const Memo = ({
         {title}
       </div>
       <div className="memopage-content">
-        {content}
+        <Markdown content={content} />
       </div>
     </div>
   );

@@ -10,15 +10,12 @@
   align-items: center;
 
   @include media("<huge") {
-    width: 768px;
     grid-template-columns: repeat(4, 1fr);
   }
-  @include media("<large") {
-    width: 512px;
+  @include media("<x-large") {
     grid-template-columns: repeat(3, 1fr);
   }
-  @include media("<medium") {
-    width: 100%;
+  @include media("<large") {
     grid-template-columns: repeat(2, 1fr);
   }
   @include media("<small") {

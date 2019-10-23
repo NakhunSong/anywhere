@@ -14,7 +14,7 @@
     textarea {
       width: 100%;
       font-size: 2rem;
-      @include media("<huge") {
+      @include media("<x-large") {
         font-size: 1.2rem;
       }
     }
@@ -40,8 +40,12 @@
       }
     }
   }
+  .edit-content-preview {
+    flex: 0.5;
+    margin-left: 10px;
+  }
 
-  @include media("<huge") {
+  @include media("<x-large") {
     width: 100%;
   }
   @include media("<medium") {
