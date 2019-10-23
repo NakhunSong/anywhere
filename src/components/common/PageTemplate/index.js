@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Button from '../Button';
+
 import './style.scss';
 
 const PageTemplate = ({
   children,
-  buttonType,
+  button,
   to,
-  handleRightButton,
 }) => {
   return (
     <div className="page-container">
       <div className="page-header">
         <Link to="/"><div className="logo">Memo</div></Link>
-        {to
+        {/* {to
           ? <Link to={to}><Button type={buttonType} /></Link>
           : <Button type={buttonType} handleButton={handleRightButton} />}
+        {button} */}
+        {to
+          ? <Link to={to}>{button}</Link>
+          : button}
       </div>
       {children}
     </div>
@@ -25,9 +28,8 @@ const PageTemplate = ({
 
 PageTemplate.propTypes = {
   children: PropTypes.element.isRequired,
-  buttonType: PropTypes.string.isRequired,
+  button: PropTypes.element.isRequired,
   to: PropTypes.string,
-  handleRightButton: PropTypes.func,
 };
 
 export default PageTemplate;

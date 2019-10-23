@@ -1,7 +1,6 @@
-import { getItem } from "lib/utils/listLocalStorage";
-
 // actions
 export const GET_MEMO = 'GET_MEMO';
+export const RESET_MEMO = 'RESET_MEMO';
 
 // action creators
 const getMemo = (memo) => {
@@ -12,9 +11,15 @@ const getMemo = (memo) => {
     },
   };
 };
+const resetMemo = () => {
+  return {
+    type: RESET_MEMO,
+  };
+};
 
 export const actionCreators = {
   getMemo,
+  resetMemo,
 };
 
 // initial state
@@ -36,6 +41,12 @@ export function reducer(state = initialState, action) {
       }
       return {
         ...state,
+      };
+    }
+    case RESET_MEMO: {
+      return {
+        title: '',
+        content: '',
       };
     }
     default: {

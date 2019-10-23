@@ -10,15 +10,15 @@ const MemoItem = ({ memo }) => {
       className="memo-container"
     >
       <h2 className="memo-title">
-        {memo.title.length < 14 ? memo.title : `${memo.title.substring(0, 14)}...` }
+        {memo.title.length < 11 ? memo.title : `${memo.title.substring(0, 11)}...` }
       </h2>
+      <div></div>
       <div className="memo-content">
-        {memo.content.length < 130
+        {memo.content.length < 50
           ? memo.content
           : (
             <div>
-              <p>{memo.content.substring(0, 100)}</p>
-              <p>. . .</p>
+              {memo.content.substring(0, 50)}<p> . . .</p>
             </div>
           )}
       </div>

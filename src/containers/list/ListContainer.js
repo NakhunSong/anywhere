@@ -6,6 +6,8 @@ import { actionCreators as listActions } from 'reducers/list';
 
 import PageTemplate from 'components/common/PageTemplate';
 import MemoList from 'components/list/MemoList';
+import SmallButton from 'components/common/SmallButton';
+import { getItem } from 'lib/utils/listLocalStorage';
 
 class ListContainer extends PureComponent {
 
@@ -15,13 +17,17 @@ class ListContainer extends PureComponent {
 
   initialize = () => {
     const { ListActions } = this.props;
-    ListActions.getMemoList();
+    const list = getItem('list');
+    ListActions.getMemoList(list);
   };
 
   render() {
     const { memoList } = this.props;
     return (
-      <PageTemplate buttonType="plus-square" to="edit">
+      <PageTemplate
+        to="edit"
+        button={<SmallButton big name="추가" />}
+      >
         <MemoList
           list={memoList}
         />

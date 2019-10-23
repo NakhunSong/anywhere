@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import MemoContainer from 'containers/memo/MemoContainer';
 
-const MemoPage = ({ match }) => {
+const MemoPage = ({ match, history }) => {
   return (
     <MemoContainer
       match={match}
+      history={history}
     />
   );
 };

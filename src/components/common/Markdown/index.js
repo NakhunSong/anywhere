@@ -1,5 +1,6 @@
 import React from 'react';
 import MarkDownRender from 'react-markdown/with-html';
+import breaks from 'remark-breaks';
 import PropTypes from 'prop-types';
 import {
   BlockQuote,
@@ -15,6 +16,7 @@ const Markdown = ({ content }) => {
       source={content}
       skipHtml={false}
       escapeHtml={false}
+      plugins={[breaks]}
       renderers={{
         blockquote: BlockQuote,
         code: Code,

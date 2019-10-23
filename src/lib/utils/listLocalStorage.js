@@ -4,12 +4,17 @@ export const getItem = (name) => {
   return result;
 };
 
-export const setItem = (object) => {
+export const putItem = (object) => {
   let list = [];
   const getLocal = getItem('list');
   if (getLocal) {
     list = getLocal;
   }
   list.push(object);
+  global.localStorage.setItem('list', JSON.stringify(list));
+};
+
+export const setItem = (object) => {
+  const list = object || [];
   global.localStorage.setItem('list', JSON.stringify(list));
 };

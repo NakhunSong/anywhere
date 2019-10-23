@@ -21,8 +21,11 @@ const changeContent = (content) => ({
   },
 });
 
-const submitMemo = () => ({
+const submitMemo = (id) => ({
   type: SUBMIT_MEMO,
+  payload: {
+    id,
+  },
 });
 
 export const actionCreators = {
@@ -32,7 +35,8 @@ export const actionCreators = {
 };
 
 // initial state
-let id = getItem('list').length;
+const getlist = getItem('list');
+const id = getlist.length > 0 ? getlist[getlist.length - 1].id : 0;
 
 const initialState = {
   id,
@@ -57,7 +61,7 @@ export function reducer(state = initialState, action) {
     }
     case SUBMIT_MEMO: {
       return {
-        id: state.id + 1,
+        id: action.payload.id,
         title: '',
         content: '',
       };
