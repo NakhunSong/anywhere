@@ -7,7 +7,7 @@ import { actionCreators as memoActions } from 'reducers/memo';
 import { actionCreators as listActions } from 'reducers/list';
 import PageTemplate from 'components/common/PageTemplate';
 import Memo from 'components/memo/Memo';
-import ModifyButton from 'components/memo/ModifyButton';
+import ManageButton from 'components/memo/ManageButton';
 import { getItem, setItem } from 'lib/utils/listLocalStorage';
 
 class MemoContainer extends PureComponent {
@@ -40,7 +40,7 @@ class MemoContainer extends PureComponent {
     const { handleRemove } = this;
     return (
       <PageTemplate
-        button={<ModifyButton memoId={id} handleRemove={handleRemove} />}
+        button={<ManageButton memoId={id} handleRemove={handleRemove} />}
       >
         <Memo
           title={title}

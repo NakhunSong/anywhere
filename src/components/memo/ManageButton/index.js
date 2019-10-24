@@ -3,7 +3,7 @@ import { Icon, Popover } from 'antd';
 import SmallButton from 'components/common/SmallButton';
 import './style.scss';
 
-const ModifyButton = ({ handleRemove }) => {
+const ManageButton = ({ handleRemove }) => {
   return (
     <Popover
       placement="bottomRight"
@@ -25,4 +25,4 @@ const ModifyButton = ({ handleRemove }) => {
   );
 };
 
-export default ModifyButton;
+export default ManageButton;
