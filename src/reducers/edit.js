@@ -2,9 +2,9 @@
 import { getNextId } from 'lib/utils/listLocalStorage';
 
 // actions
-export const CHANGE_TITLE = 'CHANGE_TITLE';
-export const CHANGE_CONTENT = 'CHANGE_CONTENT';
-export const RESET_MEMO = 'RESET_MEMO';
+export const CHANGE_TITLE = 'edit/CHANGE_TITLE';
+export const CHANGE_CONTENT = 'edit/CHANGE_CONTENT';
+export const RESET_MEMO = 'edit/RESET_MEMO';
 export const GET_MEMO = 'edit/GET_MEMO';
 
 // action creators

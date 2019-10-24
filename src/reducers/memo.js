@@ -1,6 +1,6 @@
 // actions
-export const GET_MEMO = 'GET_MEMO';
-export const RESET_MEMO = 'RESET_MEMO';
+export const GET_MEMO = 'memo/GET_MEMO';
+export const RESET_MEMO = 'memo/RESET_MEMO';
 
 // action creators
 const getMemo = (memo) => {

@@ -23,10 +23,10 @@ const SmallButton = ({
 };
 
 SmallButton.propTypes = {
-  big: PropTypes.object.isRequired,
-  color: PropTypes.bool.isRequired,
+  big: PropTypes.bool,
+  color: PropTypes.string,
   name: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
 };
 
 export default SmallButton;

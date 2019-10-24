@@ -9,7 +9,7 @@ import { actionCreators as editActions } from 'reducers/edit';
 import PageTemplate from 'components/common/PageTemplate';
 import Memo from 'components/memo/Memo';
 import ManageButton from 'components/memo/ManageButton';
-import { getItem, setItem } from 'lib/utils/listLocalStorage';
+import { getItem, setItem, getNextId } from 'lib/utils/listLocalStorage';
 
 class MemoContainer extends PureComponent {
 

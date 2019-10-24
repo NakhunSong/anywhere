@@ -1,8 +1,8 @@
 // actions
-export const GET_MEMO_LIST = 'GET_MEMO_LIST';
-export const ADD_MEMO = 'ADD_MEMO';
-export const EDIT_MEMO = 'EDIT_MEMO';
-export const REMOVE_MEMO = 'REMOVE_MEMO';
+export const GET_MEMO_LIST = 'list/GET_MEMO_LIST';
+export const ADD_MEMO = 'list/ADD_MEMO';
+export const EDIT_MEMO = 'list/EDIT_MEMO';
+export const REMOVE_MEMO = 'list/REMOVE_MEMO';
 
 // action creators
 const getMemoList = (list) => {
