@@ -36,7 +36,7 @@ export const actionCreators = {
 
 // initial state
 const getlist = getItem('list');
-const id = getlist.length > 0 ? getlist[getlist.length - 1].id : 0;
+const id = getlist.length > 0 ? getlist[getlist.length - 1].id + 1 : 0;
 
 const initialState = {
   id,

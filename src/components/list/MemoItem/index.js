@@ -14,11 +14,12 @@ const MemoItem = ({ memo }) => {
       </h2>
       <div></div>
       <div className="memo-content">
-        {memo.content.length < 50
+        {memo.content.length < 60
           ? memo.content
           : (
             <div>
-              {memo.content.substring(0, 50)}<p> . . .</p>
+              {memo.content.substring(0, 60)}
+              <p> . . .</p>
             </div>
           )}
       </div>
