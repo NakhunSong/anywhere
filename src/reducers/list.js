@@ -1,6 +1,7 @@
 // actions
 export const GET_MEMO_LIST = 'GET_MEMO_LIST';
 export const ADD_MEMO = 'ADD_MEMO';
+export const EDIT_MEMO = 'EDIT_MEMO';
 export const REMOVE_MEMO = 'REMOVE_MEMO';
 
 // action creators
@@ -20,6 +21,14 @@ const addMemo = (memo) => {
     },
   };
 };
+const editMemo = (list) => {
+  return {
+    type: EDIT_MEMO,
+    payload: {
+      list,
+    },
+  };
+};
 const removeMemo = (id) => {
   return {
     type: REMOVE_MEMO,
@@ -32,6 +41,7 @@ const removeMemo = (id) => {
 export const actionCreators = {
   getMemoList,
   addMemo,
+  editMemo,
   removeMemo,
 };
 
@@ -51,6 +61,11 @@ export function reducer(state = initialState, action) {
     case ADD_MEMO: {
       return {
         memoList: [...state.memoList, action.payload.memo],
+      };
+    }
+    case EDIT_MEMO: {
+      return {
+        memoList: action.payload.list,
       };
     }
     case REMOVE_MEMO: {

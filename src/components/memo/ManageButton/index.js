@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Popover } from 'antd';
 import SmallButton from 'components/common/SmallButton';
 import './style.scss';
 
-const ManageButton = ({ handleRemove }) => {
+const ManageButton = ({ handleRemove, handleModify }) => {
   return (
     <Popover
       placement="bottomRight"
@@ -11,7 +12,7 @@ const ManageButton = ({ handleRemove }) => {
         <div className="popover-button-wrap">
           <SmallButton color="black" name="삭제" handleClick={handleRemove} />
           |
-          <SmallButton color="black" name="수정" />
+          <SmallButton color="black" name="수정" handleClick={handleModify} />
         </div>
       )}
       trigger="click"
@@ -23,6 +24,11 @@ const ManageButton = ({ handleRemove }) => {
       />
     </Popover>
   );
+};
+
+ManageButton.propTypes = {
+  handleRemove: PropTypes.func.isRequired,
+  handleModify: PropTypes.func.isRequired,
 };
 
 export default ManageButton;

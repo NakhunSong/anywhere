@@ -24,6 +24,7 @@ export const actionCreators = {
 
 // initial state
 const initialState = {
+  id: 0,
   title: '',
   content: '',
 };
@@ -35,6 +36,7 @@ export function reducer(state = initialState, action) {
       const { data } = action.payload;
       if (data) {
         return {
+          id: data.id,
           title: data.title,
           content: data.content,
         };
@@ -45,6 +47,7 @@ export function reducer(state = initialState, action) {
     }
     case RESET_MEMO: {
       return {
+        id: 0,
         title: '',
         content: '',
       };

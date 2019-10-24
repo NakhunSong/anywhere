@@ -1,10 +1,11 @@
 // lib
-import { getItem } from 'lib/utils/listLocalStorage';
+import { getNextId } from 'lib/utils/listLocalStorage';
 
 // actions
 export const CHANGE_TITLE = 'CHANGE_TITLE';
 export const CHANGE_CONTENT = 'CHANGE_CONTENT';
-export const SUBMIT_MEMO = 'SUBMIT_MEMO';
+export const RESET_MEMO = 'RESET_MEMO';
+export const GET_MEMO = 'edit/GET_MEMO';
 
 // action creators
 const changeTitle = (title) => ({
@@ -21,27 +22,35 @@ const changeContent = (content) => ({
   },
 });
 
-const submitMemo = (id) => ({
-  type: SUBMIT_MEMO,
+const resetMemo = (id) => ({
+  type: RESET_MEMO,
   payload: {
     id,
+  },
+});
+
+const getMemo = (memo) => ({
+  type: GET_MEMO,
+  payload: {
+    memo,
   },
 });
 
 export const actionCreators = {
   changeTitle,
   changeContent,
-  submitMemo,
+  resetMemo,
+  getMemo,
 };
 
 // initial state
-const getlist = getItem('list');
-const id = getlist.length > 0 ? getlist[getlist.length - 1].id + 1 : 0;
+const id = getNextId('list');
 
 const initialState = {
   id,
   title: '',
   content: '',
+  isModify: false,
 };
 
 // reducer
@@ -59,11 +68,20 @@ export function reducer(state = initialState, action) {
         content: action.payload.content,
       };
     }
-    case SUBMIT_MEMO: {
+    case RESET_MEMO: {
       return {
         id: action.payload.id,
         title: '',
         content: '',
+        isModify: false,
+      };
+    }
+    case GET_MEMO: {
+      return {
+        id: action.payload.memo.id,
+        title: action.payload.memo.title,
+        content: action.payload.memo.content,
+        isModify: action.payload.memo.isModify,
       };
     }
     default: {
