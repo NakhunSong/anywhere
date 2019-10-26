@@ -7,12 +7,9 @@ export const EDIT_MEMO = 'list/EDIT_MEMO';
 export const REMOVE_MEMO = 'list/REMOVE_MEMO';
 
 // action creators
-const getMemoList = (list) => {
+const getMemoList = () => {
   return {
     type: GET_MEMO_LIST,
-    payload: {
-      list,
-    },
   };
 };
 const addMemo = (memo) => {
