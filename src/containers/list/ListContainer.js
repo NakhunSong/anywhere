@@ -8,7 +8,7 @@ import { actionCreators as editActions } from 'reducers/edit';
 import PageTemplate from 'components/common/PageTemplate';
 import MemoList from 'components/list/MemoList';
 import SmallButton from 'components/common/SmallButton';
-import { getItem, getNextId } from 'lib/utils/listLocalStorage';
+import { getNextId } from 'lib/utils/listLocalStorage';
 
 class ListContainer extends PureComponent {
 
@@ -18,8 +18,7 @@ class ListContainer extends PureComponent {
 
   initialize = () => {
     const { EditActions, ListActions } = this.props;
-    const list = getItem('list');
-    ListActions.getMemoList(list);
+    ListActions.getMemoList();
     EditActions.resetMemo(getNextId('list'));
   };
 

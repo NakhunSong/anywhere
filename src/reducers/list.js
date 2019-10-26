@@ -1,16 +1,15 @@
 // actions
 export const GET_MEMO_LIST = 'list/GET_MEMO_LIST';
+export const GET_MEMO_LIST_SUCCESS = 'list/GET_MEMO_LIST_SUCCESS';
+export const GET_MEMO_LIST_FAILURE = 'list/GET_MEMO_LIST_FAILURE';
 export const ADD_MEMO = 'list/ADD_MEMO';
 export const EDIT_MEMO = 'list/EDIT_MEMO';
 export const REMOVE_MEMO = 'list/REMOVE_MEMO';
 
 // action creators
-const getMemoList = (list) => {
+const getMemoList = () => {
   return {
     type: GET_MEMO_LIST,
-    payload: {
-      list,
-    },
   };
 };
 const addMemo = (memo) => {
@@ -55,7 +54,17 @@ export function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_MEMO_LIST: {
       return {
-        memoList: action.payload.list,
+        ...state,
+      };
+    }
+    case GET_MEMO_LIST_SUCCESS: {
+      return {
+        memoList: action.payload,
+      };
+    }
+    case GET_MEMO_LIST_FAILURE: {
+      return {
+        ...state,
       };
     }
     case ADD_MEMO: {
@@ -70,7 +79,6 @@ export function reducer(state = initialState, action) {
     }
     case REMOVE_MEMO: {
       const list = state.memoList.filter((m) => m.id !== action.payload.id);
-      console.log(list);
       return {
         memoList: list,
       };

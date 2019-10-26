@@ -9,7 +9,7 @@ import { actionCreators as editActions } from 'reducers/edit';
 import PageTemplate from 'components/common/PageTemplate';
 import Memo from 'components/memo/Memo';
 import ManageButton from 'components/memo/ManageButton';
-import { getItem, setItem, getNextId } from 'lib/utils/listLocalStorage';
+import { getItem, setItem } from 'lib/utils/listLocalStorage';
 
 class MemoContainer extends PureComponent {
 
@@ -18,10 +18,9 @@ class MemoContainer extends PureComponent {
   }
 
   initialize = () => {
-    const { match, MemoActions, list } = this.props;
+    const { match, MemoActions } = this.props;
     const { id } = match.params;
-    const memoIndex = list.findIndex((l) => l.id === Number(id, 10));
-    MemoActions.getMemo(list[memoIndex]);
+    MemoActions.getMemo(id);
   }
 
   handleRemove = () => {
@@ -87,7 +86,6 @@ MemoContainer.propTypes = {
   ListActions: PropTypes.object.isRequired,
   MemoActions: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
-  list: PropTypes.array.isRequired,
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
