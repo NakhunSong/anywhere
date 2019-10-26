@@ -7,5 +7,6 @@
 - React.js
 - React-Router-Dom
 - Redux
+- Redux-Saga
 - SASS
 - React-Markdown
