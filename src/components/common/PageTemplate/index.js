@@ -13,10 +13,6 @@ const PageTemplate = ({
     <div className="page-container">
       <div className="page-header">
         <Link to="/"><div className="logo">Memo</div></Link>
-        {/* {to
-          ? <Link to={to}><Button type={buttonType} /></Link>
-          : <Button type={buttonType} handleButton={handleRightButton} />}
-        {button} */}
         {to
           ? <Link to={to}>{button}</Link>
           : button}

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { actionCreators as editActions } from 'reducers/edit';
 import { actionCreators as listActions } from 'reducers/list';
-import { putItem } from 'lib/utils/listLocalStorage';
+import { getItem, putItem, getNextId, setItem } from 'lib/utils/listLocalStorage';
 import PageTemplate from 'components/common/PageTemplate';
 import EditView from 'components/edit/EditView';
 import SmallButton from 'components/common/SmallButton';
@@ -29,6 +29,7 @@ class EditContainer extends PureComponent {
       id,
       title,
       content,
+      isModify,
     } = this.props;
 
     const memo = {
@@ -36,9 +37,21 @@ class EditContainer extends PureComponent {
       title,
       content,
     };
+    if (isModify) {
+      const newList = getItem('list').map((m) => {
+        if (m.id === id) {
+          return memo;
+        }
+        return m;
+      });
+      setItem(newList);
+      ListActions.editMemo(newList);
+      EditActions.resetMemo(getNextId('list'));
+      return;
+    }
     ListActions.addMemo(memo);
     putItem(memo);
-    EditActions.submitMemo(id + 1);
+    EditActions.resetMemo(id + 1);
   }
 
   render() {
@@ -68,6 +81,7 @@ EditContainer.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  isModify: PropTypes.bool.isRequired,
 };
 
 export default connect(
@@ -75,6 +89,7 @@ export default connect(
     id: state.edit.id,
     title: state.edit.title,
     content: state.edit.content,
+    isModify: state.edit.isModify,
   }),
   (dispatch) => ({
     EditActions: bindActionCreators(editActions, dispatch),

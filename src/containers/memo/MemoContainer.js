@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 
 import { actionCreators as memoActions } from 'reducers/memo';
 import { actionCreators as listActions } from 'reducers/list';
+import { actionCreators as editActions } from 'reducers/edit';
 import PageTemplate from 'components/common/PageTemplate';
 import Memo from 'components/memo/Memo';
-import ModifyButton from 'components/memo/ModifyButton';
-import { getItem, setItem } from 'lib/utils/listLocalStorage';
+import ManageButton from 'components/memo/ManageButton';
+import { getItem, setItem, getNextId } from 'lib/utils/listLocalStorage';
 
 class MemoContainer extends PureComponent {
 
@@ -17,14 +18,19 @@ class MemoContainer extends PureComponent {
   }
 
   initialize = () => {
-    const { MemoActions, match, list } = this.props;
+    const { match, MemoActions, list } = this.props;
     const { id } = match.params;
     const memoIndex = list.findIndex((l) => l.id === Number(id, 10));
     MemoActions.getMemo(list[memoIndex]);
   }
-  
+
   handleRemove = () => {
-    const { MemoActions, ListActions, match, history } = this.props;
+    const {
+      history,
+      MemoActions,
+      ListActions,
+      match,
+    } = this.props;
     let { id } = match.params;
     id = Number(id, 10);
 
@@ -35,12 +41,36 @@ class MemoContainer extends PureComponent {
     history.goBack();
   }
 
+  handleModify = () => {
+    const {
+      history,
+      EditActions,
+      id,
+      title,
+      content,
+    } = this.props;
+    const memo = {
+      id,
+      title,
+      content,
+      isModify: true,
+    };
+    EditActions.getMemo(memo);
+    history.push('/edit');
+  }
+
   render() {
     const { id, title, content } = this.props;
-    const { handleRemove } = this;
+    const { handleRemove, handleModify } = this;
     return (
       <PageTemplate
-        button={<ModifyButton memoId={id} handleRemove={handleRemove} />}
+        button={(
+          <ManageButton
+            memoId={id}
+            handleRemove={handleRemove}
+            handleModify={handleModify}
+          />
+        )}
       >
         <Memo
           title={title}
@@ -52,6 +82,9 @@ class MemoContainer extends PureComponent {
 }
 
 MemoContainer.propTypes = {
+  history: PropTypes.object.isRequired,
+  EditActions: PropTypes.object.isRequired,
+  ListActions: PropTypes.object.isRequired,
   MemoActions: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   list: PropTypes.array.isRequired,
@@ -70,5 +103,6 @@ export default connect(
   (dispatch) => ({
     MemoActions: bindActionCreators(memoActions, dispatch),
     ListActions: bindActionCreators(listActions, dispatch),
+    EditActions: bindActionCreators(editActions, dispatch),
   }),
 )(MemoContainer);

@@ -13,9 +13,10 @@ const enhancer = isProduction
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
 
-export default function configure() {
+export default function configure(initialState) {
   const store = createStore(
     reducers,
+    initialState,
     enhancer,
   );
   store.sagaTask = sagaMiddleware.run(rootSaga);

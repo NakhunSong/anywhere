@@ -1,6 +1,6 @@
 // actions
-export const GET_MEMO = 'GET_MEMO';
-export const RESET_MEMO = 'RESET_MEMO';
+export const GET_MEMO = 'memo/GET_MEMO';
+export const RESET_MEMO = 'memo/RESET_MEMO';
 
 // action creators
 const getMemo = (memo) => {
@@ -24,6 +24,7 @@ export const actionCreators = {
 
 // initial state
 const initialState = {
+  id: 0,
   title: '',
   content: '',
 };
@@ -35,6 +36,7 @@ export function reducer(state = initialState, action) {
       const { data } = action.payload;
       if (data) {
         return {
+          id: data.id,
           title: data.title,
           content: data.content,
         };
@@ -45,6 +47,7 @@ export function reducer(state = initialState, action) {
     }
     case RESET_MEMO: {
       return {
+        id: 0,
         title: '',
         content: '',
       };

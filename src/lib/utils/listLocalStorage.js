@@ -18,3 +18,9 @@ export const setItem = (object) => {
   const list = object || [];
   global.localStorage.setItem('list', JSON.stringify(list));
 };
+
+export const getNextId = (name) => {
+  let list = global.localStorage.getItem(name);
+  list = list ? JSON.parse(list) : [];
+  return list.length > 0 ? list[list.length - 1].id + 1 : 0;
+};
