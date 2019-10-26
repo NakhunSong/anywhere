@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import EditContainer from 'containers/edit/EditContainer';
 
-const EditPage = () => {
+const EditPage = ({ history }) => {
   return (
-    <EditContainer />
+    <EditContainer
+      history={history}
+    />
   );
+};
+
+EditPage.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default EditPage;

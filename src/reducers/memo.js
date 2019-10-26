@@ -1,7 +1,6 @@
 // actions
 export const GET_MEMO = 'memo/GET_MEMO';
 export const GET_MEMO_SUCCESS = 'memo/GET_MEMO_SUCCESS';
-export const GET_MEMO_FAILURE = 'memo/GET_MEMO_FAILURE';
 export const RESET_MEMO = 'memo/RESET_MEMO';
 
 // action creators
@@ -48,11 +47,6 @@ export function reducer(state = initialState, action) {
           content: payload.content,
         };
       }
-      return {
-        ...state,
-      };
-    }
-    case GET_MEMO_FAILURE: {
       return {
         ...state,
       };

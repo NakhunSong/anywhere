@@ -1,10 +1,14 @@
 import { all, put, call, takeLatest } from 'redux-saga/effects';
-import { GET_MEMO, GET_MEMO_SUCCESS, GET_MEMO_FAILURE } from 'reducers/memo';
+import { GET_MEMO, GET_MEMO_SUCCESS } from 'reducers/memo';
 import { getItem } from 'lib/utils/listLocalStorage';
 
+/**
+ * GET MEMO
+ * @param {number} memoId
+ */
 function getMemoAPI(memoId) {
   const list = getItem('list');
-  const memoIndex = list.findIndex((l) => l.id === Number(memoId, 10));
+  const memoIndex = list.findIndex((l) => l.id === memoId);
   return list[memoIndex];
 }
 function* getMemo(action) {
@@ -16,9 +20,6 @@ function* getMemo(action) {
     });
   } catch (e) {
     console.error(e);
-    yield put({
-      type: GET_MEMO_FAILURE,
-    });
   }
 }
 function* watchGetMemo() {

@@ -1,11 +1,11 @@
-// lib
-import { getNextId } from 'lib/utils/listLocalStorage';
-
 // actions
 export const CHANGE_TITLE = 'edit/CHANGE_TITLE';
 export const CHANGE_CONTENT = 'edit/CHANGE_CONTENT';
-export const RESET_MEMO = 'edit/RESET_MEMO';
+export const RESET_EDIT = 'edit/RESET_EDIT';
 export const GET_MEMO = 'edit/GET_MEMO';
+export const ADD_MEMO = 'edit/ADD_MEMO';
+export const EDIT_MEMO = 'edit/EDIT_MEMO';
+export const REMOVE_MEMO = 'edit/REMOVE_MEMO';
 
 // action creators
 const changeTitle = (title) => ({
@@ -22,8 +22,8 @@ const changeContent = (content) => ({
   },
 });
 
-const resetMemo = (id) => ({
-  type: RESET_MEMO,
+const resetEdit = (id) => ({
+  type: RESET_EDIT,
   payload: {
     id,
   },
@@ -36,18 +36,41 @@ const getMemo = (memo) => ({
   },
 });
 
+const addMemo = (memo) => ({
+  type: ADD_MEMO,
+  payload: {
+    memo,
+  },
+});
+
+const editMemo = (memo) => ({
+  type: EDIT_MEMO,
+  payload: {
+    memo,
+  },
+});
+
+const removeMemo = (id) => ({
+  type: REMOVE_MEMO,
+  payload: {
+    id,
+  },
+});
+
 export const actionCreators = {
   changeTitle,
   changeContent,
-  resetMemo,
+  resetEdit,
   getMemo,
+  addMemo,
+  editMemo,
+  removeMemo,
 };
 
 // initial state
-const id = getNextId('list');
 
 const initialState = {
-  id,
+  id: 0,
   title: '',
   content: '',
   isModify: false,
@@ -68,7 +91,7 @@ export function reducer(state = initialState, action) {
         content: action.payload.content,
       };
     }
-    case RESET_MEMO: {
+    case RESET_EDIT: {
       return {
         id: action.payload.id,
         title: '',
@@ -82,6 +105,21 @@ export function reducer(state = initialState, action) {
         title: action.payload.memo.title,
         content: action.payload.memo.content,
         isModify: action.payload.memo.isModify,
+      };
+    }
+    case ADD_MEMO: {
+      return {
+        ...state,
+      };
+    }
+    case EDIT_MEMO: {
+      return {
+        ...state,
+      };
+    }
+    case REMOVE_MEMO: {
+      return {
+        ...state,
       };
     }
     default: {

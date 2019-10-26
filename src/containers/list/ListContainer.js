@@ -8,7 +8,6 @@ import { actionCreators as editActions } from 'reducers/edit';
 import PageTemplate from 'components/common/PageTemplate';
 import MemoList from 'components/list/MemoList';
 import SmallButton from 'components/common/SmallButton';
-import { getNextId } from 'lib/utils/listLocalStorage';
 
 class ListContainer extends PureComponent {
 
@@ -17,9 +16,8 @@ class ListContainer extends PureComponent {
   }
 
   initialize = () => {
-    const { EditActions, ListActions } = this.props;
+    const { ListActions } = this.props;
     ListActions.getMemoList();
-    EditActions.resetMemo(getNextId('list'));
   };
 
   render() {
@@ -38,7 +36,6 @@ class ListContainer extends PureComponent {
 }
 
 ListContainer.propTypes = {
-  EditActions: PropTypes.object.isRequired,
   ListActions: PropTypes.object.isRequired,
   memoList: PropTypes.array.isRequired,
 };
