@@ -17,6 +17,7 @@
     "react-scripts": "3.2.0",
     "react-textarea-autosize": "^7.1.0",
     "redux": "^4.0.4",
+    "redux-saga": "^1.1.1",
     "remark-breaks": "^1.0.3"
   },
   "scripts": {
