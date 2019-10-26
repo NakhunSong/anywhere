@@ -1,7 +1,7 @@
 import { all, put, call, takeLatest } from 'redux-saga/effects';
 import { ADD_MEMO, RESET_EDIT, EDIT_MEMO, REMOVE_MEMO } from 'reducers/edit';
 import { GET_MEMO, RESET_MEMO } from 'reducers/memo';
-import { getItem, setItem, putItem } from 'lib/utils/listLocalStorage';
+import { getItem, setItem, putItem, getNextId } from 'lib/utils/listLocalStorage';
 
 /**
  * ADD MEMO
@@ -78,9 +78,15 @@ function removeMemoAPI(memoId) {
   setItem(list);
 }
 function* removeMemo(action) {
+  const id = getNextId('list');
   yield call(removeMemoAPI, action.payload.id);
-  console.log(action.payload.id);
   try {
+    yield put({
+      type: RESET_EDIT,
+      payload: {
+        id,
+      },
+    });
     yield put({
       type: RESET_MEMO,
     });
