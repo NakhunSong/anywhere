@@ -3,7 +3,7 @@ import { GET_MEMO, GET_MEMO_SUCCESS } from 'reducers/memo';
 import { getItem } from 'lib/utils/listLocalStorage';
 
 /**
- * GET MEMO
+ * Get memo
  * @param {number} memoId
  */
 function getMemoAPI(memoId) {

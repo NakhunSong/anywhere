@@ -1,14 +1,14 @@
 import { all, put, call, takeLatest } from 'redux-saga/effects';
 import { ADD_MEMO, RESET_EDIT, EDIT_MEMO, REMOVE_MEMO } from 'reducers/edit';
 import { GET_MEMO, RESET_MEMO } from 'reducers/memo';
-import { getItem, setItem, putItem, getNextId } from 'lib/utils/listLocalStorage';
+import { getItem, setItem, pushItem, getNextId } from 'lib/utils/listLocalStorage';
 
 /**
- * ADD MEMO
+ * Add memo
  * @param {object} memo
  */
 function addMemoAPI(memo) {
-  putItem(memo);
+  pushItem('list', memo);
   return memo;
 }
 function* addMemo(action) {
@@ -34,7 +34,7 @@ function* watchAddMemo() {
 }
 
 /**
- * EDIT MEMO
+ * Edit memo
  * @param {object} memo
  */
 function editMemoAPI(memo) {
@@ -44,7 +44,7 @@ function editMemoAPI(memo) {
     }
     return m;
   });
-  setItem(newList);
+  setItem('list', newList);
   return memo;
 }
 function* editMemo(action) {
@@ -70,12 +70,12 @@ function* watchEditMemo() {
 }
 
 /**
- * REMOVE MEMO
+ * Remove memo
  * @param {number} memoId
  */
 function removeMemoAPI(memoId) {
   const list = getItem('list').filter((l) => l.id !== memoId);
-  setItem(list);
+  setItem('list', list);
 }
 function* removeMemo(action) {
   const id = getNextId('list');

@@ -4,7 +4,7 @@ import { RESET_EDIT } from 'reducers/edit';
 import { getItem, getNextId } from 'lib/utils/listLocalStorage';
 
 /**
- * GET MEMO LIST
+ * Get memo list
  */
 function getMemoListAPI() {
   return getItem('list');
